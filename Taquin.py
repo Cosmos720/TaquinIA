@@ -232,7 +232,8 @@ class Explored:
                 return True
         return False
 
-"""class __main__:
+"""
+class __main__:
     moyT = 0
     moyN = 0
     taille = 3
@@ -254,8 +255,8 @@ class Explored:
     moyT /= 100
     moyN /= 100
     print(("Moyenne en temps: {} et en nombre de taquin creer: {} pour l'heuristique {}").format(moyT, moyN, heur))
-    exit(0)"""
-
+    exit(0)
+"""
 class __main__:
     taille = 3
     heur = str(input("Heuristiques ?\nEntrez les numéros séparés par des espaces.\n"))
