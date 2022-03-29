@@ -187,8 +187,8 @@ class Taquin:
         while(True):
             aExpanser = pile.etats.pop(0)
             if(aExpanser.est_solution()):
-                print(("taquin crée = {}\n").format(taquin_creer))
-                return aExpanser
+                #print(("taquin crée = {}\n").format(taquin_creer))
+                return aExpanser, taquin_creer
             
             
             children = aExpanser.expanser()
@@ -232,8 +232,31 @@ class Explored:
                 return True
         return False
 
-class __main__:
+"""class __main__:
+    moyT = 0
+    moyN = 0
+    taille = 3
+    heur = str(input("Heuristiques ?\nEntrez les numéros séparés par des espaces.\n"))
+    if len(heur) == 1:
+        heur = [int(heur)]
+    else:
+        heur = heur.split(' ')
+        for index,choice in enumerate(heur):
+            heur[index] = int(choice)
+    for i in range(100):
+        t = Taquin(taille, heur)
+        t.shuffleGrid()
+        start = time.time()
+        result, taquin_creer= t.aStar()
+        temps = time.time() - start
+        moyT += temps
+        moyN += taquin_creer
+    moyT /= 100
+    moyN /= 100
+    print(("Moyenne en temps: {} et en nombre de taquin creer: {} pour l'heuristique {}").format(moyT, moyN, heur))
+    exit(0)"""
 
+class __main__:
     taille = 3
     heur = str(input("Heuristiques ?\nEntrez les numéros séparés par des espaces.\n"))
     if len(heur) == 1:
@@ -248,9 +271,9 @@ class __main__:
     print(t)
     print(heur)
     start = time.time()
-    result = t.aStar()
-    print(("Duration : {}").format(time.time() - start))
+    result, taquin_creer= t.aStar()
+    temps = time.time() - start
+    print(("Duration : {}").format(temps))
     print(result)
-    exit(0)
 
-    
+    exit(0)
