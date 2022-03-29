@@ -224,7 +224,7 @@ class Explored:
 
 class __main__:
 
-    taille = int(input("Taille du taquin ?\n"))
+    taille = 3
     heur = str(input("Heuristiques ?\nEntrez les numéros séparés par des espaces.\n"))
     if len(heur) == 1:
         heur = [int(heur)]
