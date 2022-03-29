@@ -29,6 +29,7 @@ class Taquin:
     """
 
     def __init__(self, n, h):
+        """Initialisation de l'objet Taquin"""
         self.taille = n
         self.heur = h
         self.cout = 0
@@ -47,6 +48,7 @@ class Taquin:
         self.f = self.calculer_f(self.heur)
     
     def afficher(self):
+        """Renvoie une chaine de caractere représentant le Taquin sous une forme carrée"""
         format = ""
         for x in range(self.taille):
             liste = []
@@ -96,6 +98,7 @@ class Taquin:
         return copie_T
 
     def shuffleGrid(self):
+        """Mélange le Taquin de manière à ce qu'il soit soluble"""
         shuffle(self.grille)
         permutations = 0
         for i in range(len(self.grille)):
@@ -109,16 +112,19 @@ class Taquin:
             self.updateEtat()
 
     def setGrid(self, grille):
+        """Permet de définir la grille du Taquin sois-même"""
         self.grille=grille
         self.updateEtat()
     
     def updateEtat(self):
+        """Actualise le dictionnaire du taquin afin qu'il corresponde à la grille"""
         i = 0
         for j in self.plateau.keys():
             self.plateau[j]=self.grille[i]
             i += 1
 
     def mvtPossible(self):
+        """Renvoie les mouvements possibles à partir de l'état actuel"""
         self.moves=[]
         for k in self.plateau.keys():
             if self.plateau[k] == 0:
@@ -161,9 +167,11 @@ class Taquin:
         return somme
 
     def calculer_f(self, k):
+        """Renvoie la valeur de la fonction d'évalutaion f"""
         return self.cout + self.manhattan(k)
     
     def __repr__(self):
+        """Representation du Taquin en chaine de caractere"""
         toString = "\n"
         toString += self.afficher()
         toString += self.chemin + "\n"
@@ -171,6 +179,7 @@ class Taquin:
         return toString
 
     def aStar(self):
+        """Renvoie l'état du but obtenu avec l'Algorithme A* et les heuristiques choisis"""
         taquin_creer = 1
         explored = Explored()
         pile = Frontiere()
@@ -217,6 +226,7 @@ class Explored:
         self.etats.append(e)
 
     def contient(self, e):
+        """Compare l'état e avec les états de la liste en fonction de leur grille"""
         for i in self.etats:
             if e.plateau == i.plateau:
                 return True
